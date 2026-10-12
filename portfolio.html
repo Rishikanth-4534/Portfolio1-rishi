@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>E. Rishikanth | AIML &amp; CSE Portfolio</title>
+  <meta name="description" content="Personal portfolio of E. Rishikanth, a second-year B.Tech AIML student with CSE Specialization at Sandip University.">
+  <meta name="keywords" content="E. Rishikanth, AIML, CSE, Sandip University, SOCSE, portfolio">
+  <meta property="og:title" content="E. Rishikanth | AIML & CSE Portfolio">
+  <meta property="og:description" content="Personal portfolio of E. Rishikanth, a second-year B.Tech AIML student with CSE Specialization at Sandip University.">
+  <meta property="og:type" content="website">
+  <style>
+/* ---------- Theme colours (change here to restyle the site) ---------- */
+:root, [data-theme="dark"] {
+  --bg:#0b1220; --surface:#131c2f; --text:#e5ecf6; --muted:#9aa9c0;
+  --accent:#4fd1c5; --accent-text:#06201d; --line:#25314a; --mark:#3a2f0b;
+}
+[data-theme="light"] {
+  --bg:#f5f7fb; --surface:#ffffff; --text:#14202f; --muted:#4a5a70;
+  --accent:#0f766e; --accent-text:#ffffff; --line:#d5dde9; --mark:#fff2c2;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:70px; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"Segoe UI",system-ui,sans-serif; line-height:1.6; overflow-x:hidden; }
+h1,h2,h3 { font-family:"Trebuchet MS","Segoe UI",sans-serif; line-height:1.2; margin:0 0 .6rem; }
+h1 { font-size:clamp(2.2rem,6vw,3.6rem); }
+h2 { font-size:clamp(1.6rem,4vw,2.2rem); margin-bottom:1.2rem; }
+h3 { font-size:1.15rem; }
+a { color:var(--accent); }
+img,svg { max-width:100%; }
+code,.term,.typing,.num { font-family:Consolas,"Courier New",monospace; }
+mark { background:var(--mark); color:var(--text); padding:0 .3em; border-radius:3px; }
+:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.skip { position:absolute; left:-999px; }
+.skip:focus { left:8px; top:8px; background:var(--accent); color:var(--accent-text); padding:.5rem 1rem; z-index:100; }
+
+/* Navigation */
+.nav { position:sticky; top:0; z-index:50; display:flex; align-items:center; gap:1rem; padding:.6rem 1.2rem; background:var(--bg); border-bottom:1px solid var(--line); }
+.brand { font-family:Consolas,monospace; font-weight:700; font-size:1.3rem; text-decoration:none; color:var(--text); }
+.brand span { color:var(--accent); }
+.nav nav { margin-left:auto; }
+.links { display:flex; gap:1rem; list-style:none; margin:0; padding:0; flex-wrap:wrap; }
+.links a { color:var(--muted); text-decoration:none; font-size:.95rem; }
+.links a:hover, .links a.active { color:var(--accent); }
+.icon-btn { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:8px; width:40px; height:40px; cursor:pointer; font-size:1.1rem; }
+.icon-btn:hover { border-color:var(--accent); }
+.menu-btn { display:none; margin-left:auto; }
+
+/* Layout */
+main { max-width:1100px; margin:0 auto; padding:0 1.2rem; }
+.section { padding:4rem 0 1rem; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:1.2rem; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:1.2rem; transition:transform .2s, border-color .2s; }
+.card:hover { transform:translateY(-3px); border-color:var(--accent); }
+.note { color:var(--muted); font-size:.9rem; }
+
+/* Hero */
+.hero { display:grid; grid-template-columns:1fr; gap:2rem; align-items:center; min-height:85vh; padding:3rem 0; animation:rise .7s ease both; }
+.term { color:var(--accent); margin:0; }
+.title { color:var(--muted); font-size:1.15rem; margin:0 0 .5rem; }
+.typing { color:var(--accent); min-height:1.6em; }
+.cursor { animation:blink 1s steps(2) infinite; }
+.photo { margin:0; }
+.shot { display:block; width:100%; padding:0; aspect-ratio:16/9; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--bg); color:var(--muted); cursor:zoom-in; margin-bottom:1rem; position:relative; transition:border-color .2s; }
+.shot:hover { border-color:var(--accent); }
+.shot.static { cursor:default; }
+.shot img { width:100%; height:100%; object-fit:contain; display:block; }
+.shot-empty { display:none; position:absolute; inset:0; place-items:center; text-align:center; padding:.5rem; font-size:.8rem; }
+.shot.no-img .shot-empty { display:grid; }
+#lightbox { border:1px solid var(--line); background:var(--surface); padding:.6rem; max-width:95vw; max-height:95vh; border-radius:10px; }
+#lightbox::backdrop { background:rgba(0,0,0,.8); }
+#lightbox img { max-width:100%; max-height:80vh; display:block; margin:auto; }
+#lb-close { position:absolute; top:.4rem; right:.4rem; }
+
+/* Buttons, tags, lists */
+.btns { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; }
+.btn { display:inline-block; padding:.6rem 1.1rem; border-radius:8px; border:1px solid var(--accent); color:var(--accent); background:transparent; text-decoration:none; cursor:pointer; font:inherit; transition:background .2s, color .2s; }
+.btn:hover, .btn.primary { background:var(--accent); color:var(--accent-text); }
+.btn.primary:hover { filter:brightness(1.1); }
+.btn.ghost { border-color:var(--line); color:var(--text); }
+.btn.ghost:hover { border-color:var(--accent); background:transparent; color:var(--accent); }
+.btn.small { padding:.35rem .8rem; font-size:.9rem; }
+.tags { display:flex; flex-wrap:wrap; gap:.4rem; list-style:none; padding:0; margin:.6rem 0; }
+.tags li { border:1px solid var(--line); border-radius:999px; padding:.15rem .7rem; font-size:.85rem; color:var(--muted); }
+.list { padding-left:1.2rem; margin:.5rem 0; }
+.list.plain { list-style:none; padding:0; }
+.list.plain li { margin-bottom:.6rem; overflow-wrap:anywhere; }
+.num { color:var(--accent); font-size:.85rem; margin:0 0 .3rem; }
+.filters { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.2rem; }
+.chip { background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:999px; padding:.3rem .9rem; cursor:pointer; font:inherit; }
+.chip.active, .chip:hover { background:var(--accent); color:var(--accent-text); border-color:var(--accent); }
+.project[hidden] { display:none; }
+
+/* Timeline */
+.timeline { list-style:none; margin:0; padding:0 0 0 1.5rem; border-left:2px solid var(--accent); }
+
+/* Form */
+form label { display:block; margin:.6rem 0 .2rem; }
+input, textarea { width:100%; padding:.6rem; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--text); font:inherit; }
+form .btn { margin-top:1rem; }
+
+.footer { text-align:center; color:var(--muted); padding:3rem 1rem 2rem; }
+.top { position:fixed; right:1rem; bottom:1rem; }
+
+@keyframes rise { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+@keyframes blink { 50% { opacity:0; } }
+
+/* Tablet and mobile */
+@media (max-width:820px) {
+  .two, .hero { grid-template-columns:1fr; }
+  .hero { min-height:auto; }
+  .menu-btn { display:block; }
+  .nav nav { position:absolute; top:100%; left:0; right:0; margin:0; background:var(--bg); border-bottom:1px solid var(--line); display:none; }
+  .nav nav.open { display:block; }
+  .links { flex-direction:column; padding:1rem 1.2rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  *, *::before, *::after { animation:none !important; transition:none !important; }
+}
+
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="brand" href="#home">ER<span>_</span></a>
+  <button id="menu-btn" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+  <nav aria-label="Main">
+    <ul id="nav-links" class="links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button id="theme-btn" class="icon-btn" aria-label="Switch to light mode">☀</button>
+</header>
+
+<main id="main">
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="hero-text">
+    <p class="term">$ whoami</p>
+    <h1>E. Rishikanth</h1>
+    <p class="title">B.Tech AIML with CSE Specialization<br>2nd Year Student | Sandip University</p>
+    <p class="typing" aria-live="off"><span id="typed"></span><span class="cursor">|</span></p>
+    <p>I am a second-year B.Tech student specializing in Artificial Intelligence and Machine Learning with CSE at Sandip University. I am interested in programming, AI, cybersecurity, web development and practical technology projects.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn" href="#about">About Me</a>
+      <a class="btn" href="#contact">Contact Me</a>
+      <a class="btn ghost" href="resume.pdf" download>Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <div class="two">
+    <div>
+      <p>My name is E. Rishikanth. I am currently pursuing B.Tech in Artificial Intelligence and Machine Learning with CSE Specialization at SOCSE, Sandip University. I am a second-year student interested in learning programming, artificial intelligence, machine learning, cybersecurity, web development and practical technology.</p>
+      <p>I enjoy learning through academic and practical projects.</p>
+    </div>
+    <div class="card">
+      <h3>Interests</h3>
+      <ul class="tags"><li>Artificial Intelligence</li><li>Machine Learning</li><li>Cybersecurity</li><li>Computer Science</li><li>Web Development</li><li>Programming</li><li>Cryptography</li><li>IoT</li><li>Embedded Systems</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <h2>Skills</h2>
+  <p class="note">These are topics I am learning and using in my studies and projects.</p>
+  <div class="grid">
+    <article class="card"><h3>Programming</h3><ul class="tags"><li>C</li><li>C++</li><li>Python</li></ul></article>
+    <article class="card"><h3>Web Technologies</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></article>
+    <article class="card"><h3>AI / ML</h3><ul class="tags"><li>Artificial Intelligence Fundamentals</li><li>Machine Learning Fundamentals</li></ul></article>
+    <article class="card"><h3>Cybersecurity</h3><ul class="tags"><li>Cybersecurity fundamentals</li><li>Cryptography fundamentals</li><li>Networking fundamentals</li></ul></article>
+    <article class="card"><h3>Hardware / IoT</h3><ul class="tags"><li>Arduino</li><li>ESP8266</li><li>Sensors</li><li>Arduino IDE</li></ul></article>
+    <article class="card"><h3>Tools</h3><ul class="tags"><li>VS Code</li><li>Git</li><li>GitHub</li><li>Arduino IDE</li></ul></article>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="grid" id="project-grid">
+    <article class="card project" data-cat="iot web">
+      <button type="button" class="shot" data-full="assets/images/smart-parking-system.png" data-alt="Smart Parking Slot Indicator system architecture and parking slot status" aria-label="View larger: Smart Parking Slot Indicator"><img src="assets/images/smart-parking-system.png" alt="Smart Parking Slot Indicator system architecture and parking slot status" loading="lazy"><span class="shot-empty">ADD IMAGE: assets/images/smart-parking-system.png</span></button>
+      <p class="num">Project 01</p>
+      <h3>Smart Parking Slot Indicator</h3>
+      <p>A smart parking system designed to identify parking slot availability and provide a clear real-time indication of whether a parking slot is available or occupied.</p>
+      <ul class="list"><li>Parking slot detection</li><li>Occupancy indication</li><li>Available / occupied status</li><li>Real-time visual representation</li><li>Easy-to-understand parking interface</li></ul>
+      <ul class="tags"><li>Arduino</li><li>IR Sensor</li><li>Parking Slot Detection</li><li>Occupancy Detection</li><li>Real-Time Status Indication</li></ul>
+      <div class="btns"><a class="btn small" href="https://github.com/Rishikanth-4534/rishi.git" target="_blank" rel="noopener">GitHub</a><a class="btn small" href="YOUR_LIVE_DEMO_URL" target="_blank" rel="noopener">Live Demo</a></div>
+    </article>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <h2>Education</h2>
+  <ol class="timeline">
+    <li class="card">
+      <h3>B.Tech, Artificial Intelligence and Machine Learning with CSE Specialization</h3>
+      <p>2nd Year</p>
+      <p>College: SOCSE<br>University: Sandip University<br>CGPA: 7.2<br>Relevant courses: None specified</p>
+    </li>
+  </ol>
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <h2>Academic &amp; Project Experience</h2>
+  <article class="card">
+    <p>My current experience comes from:</p>
+    <ul class="list"><li>Academic project development</li><li>Programming practice</li><li>AI/ML learning</li><li>Cybersecurity learning</li><li>Web development learning</li><li>Embedded/IoT learning</li></ul>
+  </article>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="section">
+  <h2>Resume</h2>
+  <p>The resume file is <code>resume.pdf</code>. Placeholder until added: <mark>YOUR_RESUME_FILE_HERE</mark></p>
+  <a class="btn primary" href="resume.pdf" download>Download Resume</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <ul class="list plain">
+    <li>Email: <a href="mailto:rishikanthelchala2@gmail.com">rishikanthelchala2@gmail.com</a></li>
+    <li>GitHub: <a href="https://github.com/Rishikanth-4534/rishi.git" target="_blank" rel="noopener">https://github.com/Rishikanth-4534/rishi.git</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/rishikanth-elchala-6b5b02385" target="_blank" rel="noopener">https://www.linkedin.com/in/rishikanth-elchala-6b5b02385</a></li>
+  </ul>
+  <div class="btns">
+    <a class="btn primary" href="mailto:rishikanthelchala2@gmail.com">Email</a>
+    <a class="btn" href="https://github.com/Rishikanth-4534/rishi.git" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/rishikanth-elchala-6b5b02385" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">© <span id="year"></span> E. Rishikanth. Built with HTML, CSS and JavaScript.</footer>
+<dialog id="lightbox" aria-label="Enlarged project image"><button id="lb-close" class="icon-btn" aria-label="Close image">✕</button><img id="lb-img" alt=""></dialog>
+<button id="top-btn" class="icon-btn top" aria-label="Back to top" hidden>↑</button>
+<script>
+// script.js - all interactivity for the portfolio (no libraries)
+
+// 1. Dark / light theme, saved in localStorage
+const themeBtn = document.getElementById("theme-btn");
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  themeBtn.textContent = theme === "dark" ? "☀" : "☾";
+  themeBtn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+let savedTheme = "dark"; // dark is the default
+try { savedTheme = localStorage.getItem("theme") || "dark"; } catch (e) {}
+applyTheme(savedTheme);
+themeBtn.addEventListener("click", () => {
+  const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("theme", next); } catch (e) {}
+});
+
+// 2. Mobile menu (hamburger)
+const menuBtn = document.getElementById("menu-btn");
+const navBox = document.querySelector(".nav nav");
+menuBtn.addEventListener("click", () => {
+  const open = navBox.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
+});
+navBox.addEventListener("click", (e) => {
+  if (e.target.tagName === "A") { navBox.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); }
+});
+
+// 3. Typing animation
+const phrases = ["Learning technology, building projects,", "and turning ideas into practical solutions."];
+const typed = document.getElementById("typed");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduceMotion) {
+  typed.textContent = phrases.join(" ");
+} else {
+  let phraseIndex = 0, charIndex = 0, deleting = false;
+  (function type() {
+    const text = phrases[phraseIndex];
+    typed.textContent = text.slice(0, charIndex);
+    if (!deleting && charIndex < text.length) charIndex++;
+    else if (!deleting) { deleting = true; setTimeout(type, 1500); return; }
+    else if (charIndex > 0) charIndex--;
+    else { deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; }
+    setTimeout(type, deleting ? 30 : 60);
+  })();
+}
+
+window.addEventListener("load", () => document.querySelectorAll(".shot img").forEach((i) => { if (i.naturalWidth === 0) i.parentElement.classList.add("no-img"); }));
+
+// 4b. Project image: show a placeholder if the image file is missing, click to enlarge
+const lightbox = document.getElementById("lightbox");
+document.querySelectorAll(".shot img").forEach((img) => {
+  const markMissing = () => img.parentElement.classList.add("no-img");
+  img.addEventListener("error", markMissing);
+  if (img.complete && img.naturalWidth === 0) markMissing();
+});
+document.querySelectorAll("button.shot").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("no-img")) return;
+    document.getElementById("lb-img").src = btn.dataset.full;
+    document.getElementById("lb-img").alt = btn.dataset.alt;
+    lightbox.showModal();
+  });
+});
+document.getElementById("lb-close").addEventListener("click", () => lightbox.close());
+lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+
+// 6. Back-to-top button and footer year
+const topBtn = document.getElementById("top-btn");
+window.addEventListener("scroll", () => { topBtn.hidden = window.scrollY < 400; });
+topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
